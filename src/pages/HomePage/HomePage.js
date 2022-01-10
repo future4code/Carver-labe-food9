@@ -1,9 +1,13 @@
 import React from "react"
-import styled from "./styled"
+
+
+
 
 const HomePage = () => {
+    
+
     return (
-        <h1>Home Page</h1>
+        <h1>HomePage</h1>
     )
 }
 

@@ -1,10 +1,22 @@
+###4Food###
+
+##Integrantes
+- Cassiano Moura
+- Larissa Gonçalves
+- Larissa Oliveira
+- Mariana Stefani 
 
 
 
-
-##Tecnologias##
+##Tecnologias
 
 O projeto foi desenvolvido com ReactJS.
+
+##Dependências 
+ - React Router DOM
+ - Axios
+ - Styled-components
+  
 
 ## Learn More
 

@@ -18,7 +18,7 @@ const FormSingUp = (props) => {
                 <label>CPF</label>
                 <input
                     name={'cpf'}
-                    value={props.cpf}
+                    value={props.cpfValue}
                     onChange={props.change}
                     type="text"
                     required

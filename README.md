@@ -1,6 +1,9 @@
-###4Food###
+# 4Food 
+ #### Detalhes:
+ Projeto final do módulo Front-End do curso Full-Stack Web Developer na Labenu, que simula o caso de uso do iFood. O aplicativo se integra com uma API que fornece os dados de restaurantes existentes e permite que o cliente crie novos pedidos e acompanhe-os, além de informar os dados de pedidos já finalizados.
+ 
 
-##Integrantes
+## Integrantes
 - Cassiano Moura
 - Larissa Gonçalves
 - Larissa Oliveira
@@ -8,14 +11,14 @@
 
 
 
-##Tecnologias
+## Tecnologias
 
-O projeto foi desenvolvido com ReactJS.
+O projeto foi desenvolvido com ReactJS / JSX
 
-##Dependências 
- - React Router DOM
+  ## Dependências 
+ - React-Router-DOM
  - Axios
- - Styled-components
+ - Styled-Components
   
 
 ## Learn More

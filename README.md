@@ -3,11 +3,11 @@
  Projeto final do módulo Front-End do curso Full-Stack Web Developer na Labenu, que simula o caso de uso do iFood. O aplicativo se integra com uma API que fornece os dados de restaurantes existentes e permite que o cliente crie novos pedidos e acompanhe-os, além de informar os dados de pedidos já finalizados.
  
 
-## Integrantes
-- Cassiano Moura
+## Integrantes      
+- Cassiano Moura - https://www.linkedin.com/in/cassiano-moura-1ab327167/
 - Larissa Gonçalves
 - Larissa Oliveira
-- Mariana Stefani 
+- Mariana Stefani - https://www.linkedin.com/in/marianasjesus/
 
 
 

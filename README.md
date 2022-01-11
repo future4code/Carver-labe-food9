@@ -13,7 +13,7 @@
 
 ## Tecnologias
 
-O projeto foi desenvolvido com ReactJS / JSX
+O projeto foi desenvolvido com React.js / JSX
 
   ## Dependências 
  - React-Router-DOM

@@ -6,7 +6,7 @@
 ## Integrantes      
 - Cassiano Moura - https://www.linkedin.com/in/cassiano-moura-1ab327167/
 - Larissa Gonçalves
-- Larissa Oliveira
+- Larissa Oliveira - https://github.com/MatosLarissa
 - Mariana Stefani - https://www.linkedin.com/in/marianasjesus/
 
 

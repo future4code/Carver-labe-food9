@@ -1,14 +1,6 @@
 import styled from "styled-components";
 
-
-export const Body = styled.div`
-max-width: 100%;
-overflow-x: hidden;
-display: flex;
-flex-direction: column;
-`
-
-export const Card = styled.div`
+export const Card = styled.button`
     width: 99%;
     height: flex;
     border: 1px solid #b8b8b8;

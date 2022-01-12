@@ -47,3 +47,59 @@ export const Time = styled.div`
     font-family: Oxygen;
 
 `
+
+
+export const Container = styled.div`
+    position: relative;
+    width: 94%;
+    margin: 0 auto;
+    /* border:1px solid; */
+    border: 1px solid #b8b8b8;
+    border-radius: 5px;
+
+
+
+
+    input{
+        width: 90%;
+        height: 40px;
+        margin-left: 30px;
+        border-style: hidden;
+        font-size: 1rem;
+    }
+
+    img{
+        position: absolute;
+        padding-top: 9px;
+        padding-left: 5px;
+    }
+`
+
+
+export const ButtonActive = styled.button`
+    background-color: transparent;
+    border-style: hidden;
+    font-family: Oxygen;
+    font-size: 1rem;
+    
+    :focus{
+        color: red;
+    }
+`
+
+export const Buttons = styled.div`
+    overflow-x: auto;
+    width: 22rem;
+    height: 50px;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+
+`
+
+export const ButtonFilter = styled.button`
+    width: 32%;
+    font-size: 0.8rem;
+    font-family: Oxygen;
+    margin: 0 auto;
+`

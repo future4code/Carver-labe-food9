@@ -10,7 +10,12 @@ export const goToHome = (history)=>{
 export const goToLogin = (history)=>{
     history.push('/login')
 
-export const goToRestaurante = (history, id)=>{
-    history.push(`/restaurant/${id}`)
+}
 
+export const goToPerfil = (history)=>{
+    history.push('/perfil')
+}
+
+export const goToCart = (history)=>{
+    history.push('/cart')
 }

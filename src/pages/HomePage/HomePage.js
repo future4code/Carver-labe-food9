@@ -1,15 +1,16 @@
 import React, {useEffect, useContext, useState} from "react"
 import GlobalContext from "../../context/GlobalContext";
+import { useHistory } from 'react-router-dom'
 import styled from "styled-components";
 import axios from "axios";
 import url from '../../constants/URL_BASE'
-import {Card} from './styled'
 import CardRest from "../../components/CardRest/CardRest";
+import Header from '../../components/Header/Header'
+import Filter from '../../components/Filter/Filter'
+import {Body, Card, Img, Title, Time} from './styled'
 
-const Body = styled.div`
-    max-width: 100%;
-    overflow-x: hidden;
-`
+
+
 
 
 
@@ -21,6 +22,12 @@ const HomePage = () => {
     useEffect(()=>{
         getRestaurantes()
     }, [setRestaurante])
+
+    const history = useHistory();
+
+    const goToRestaurante = (id)=>{
+        history.push(`/restaurant/${id}`)
+    }
 
     const getRestaurantes = ()=>{
         axios.get(`${url}/restaurants`, {
@@ -39,23 +46,41 @@ const HomePage = () => {
     }
 
 
-    console.log(restaurante)
 
+    // const copia = restaurante && restaurante &&(
+    //     restaurante.map((rest)=>{
+    //         return(
+                
+    //         <CardRest key={rest.id}
+    //             valor={rest.shipping}
+    //             name={rest.name}
+    //             time={rest.deliveryTime}
+    //             logo={rest.logoUrl}
+    //             id={rest.id}
+    //             det={()=> goToRestaurante(rest.id)}
+    //         />
+           
+           
+    //         )
+    //     })
+    // )
 
-    const copia = restaurante && restaurante &&(
+    const copia1 = restaurante && restaurante &&(
         restaurante.map((rest)=>{
             return(
-                
-            <CardRest key={rest.id}
-                description={rest.description}
-                name={rest.name}
-                time={rest.deliveryTime}
-                logo={rest.logoUrl}
-            />
-           
-            )
-        })
-    )
+                <Card key={rest.id} onClick={()=> goToRestaurante(rest.id)}>
+                <Img>
+                <img src={rest.logoUrl} alt={rest.name}/>
+                </Img>
+                <Title>
+                    <h1>{rest.name}</h1>
+                </Title>
+                <Time>
+                <p>{rest.deliveryTime}min</p>
+                <p>Frete R${rest.shipping},00</p>
+                </Time>
+                </Card>
+            )}))
     
         
         
@@ -63,22 +88,10 @@ const HomePage = () => {
 
     return (
         <Body>
-        {/* {copia && copia.map((rest)=>{
-            return(
-                <>
-                <Card key={rest.id}>
-                <p>{rest.description}</p>
-                <p>{rest.name}</p>
-        </Card>
-                </>
-            )
-        })} */}
-        {/* <Card>
-        <p>{description}</p>
-        </Card> */}
-        <h1>HomePage</h1>
         
-        {copia}
+        <Header/>
+        <Filter/>
+        {copia1}
         </Body>
     )
 }

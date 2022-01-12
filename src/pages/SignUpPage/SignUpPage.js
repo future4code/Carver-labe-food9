@@ -4,7 +4,7 @@ import url from '../../constants/URL_BASE'
 import useForm from "../../hooks/useForm"
 import { useHistory } from 'react-router-dom';
 import logo from '../../Images/logo-future.png'
-import { DivPai, Form, H1, Img, Title } from "./styled"
+import { DivPai, H1, Img, Title } from "./styled"
 import FormSingUp from '../../components/FormSingUp/FormSingUp';
 import { goToHome } from '../../router/coordinator'
 

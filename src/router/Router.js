@@ -8,6 +8,7 @@ import RestaurantPage from "../pages/RestaurantPage/RestaurantPage"
 import SignUpPage from "../pages/SignUpPage/SignUpPage"
 import WelcomePage from "../pages/WelcomePage/WelcomePage"
 import ErrorPage from "../pages/ErrorPage/ErrorPage"
+import RegisterAdressPage from "../pages/RegisterAdressPage/RegisterAdressPage"
 
 
 const Router =() => {
@@ -34,6 +35,9 @@ const Router =() => {
                 </Route>
                 <Route exact path="/perfil">
                     <PerfilPage/>
+                </Route>
+                <Route exact path="/address">
+                    <RegisterAdressPage/>
                 </Route>
                 <Route>
                     <ErrorPage/>

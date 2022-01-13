@@ -3,7 +3,6 @@ import avatar from '../../Images/avatar.png'
 import home from '../../Images/homepage.png'
 import cart from '../../Images/shopping-cart.png'
 import styled from "styled-components";
-import 'font-awesome/css/font-awesome.min.css'
 // import {goToHome, goToPerfil, goToCart} from '../../router/coordinator'
 import { useHistory } from 'react-router-dom'
 

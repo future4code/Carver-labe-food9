@@ -27,7 +27,7 @@ const Router =() => {
                 <Route exact path="/">
                     <HomePage/>
                 </Route>
-                <Route exact path="/restaurant/:id">
+                <Route exact path="/restaurant/:restaurantId">
                     <RestaurantPage/>
                 </Route>
                 <Route exact path="/cart">

@@ -1,20 +1,27 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import url from '../constants/URL_BASE'
 import GlobalContext from "./GlobalContext";
 
-
 const GlobalState = (props) => {
-  const [restaurante, setRestaurante] = useState([]);
-  const [restaurantDetail, setRestaurantDetail] = useState([]);
-  const [user, setUser] = useState({});
-  const [address, setAddress] = useState({});
+    const [restaurante, setRestaurante] = useState([])
+    const [restaurantDetail, setRestaurantDetail] = useState([]);
+    const [user, setUser] = useState({});
+    const [address, setAddress] = useState({});
+    const [addCart, setAddCart] = useState([])
+    const [itemsAmount, setItensAmount] = useState(0)
+    const [resInfo, setResInfo] = useState({})
+    const [cart, setCart] = React.useState({
+        products: [],
+        paymentMethod: '',
+      });
 
-  useEffect(() => {
-    getRestaurants();
-  }, [setRestaurante]);
+    useEffect(() => {
+        getRestaurants();
+    }, [setRestaurante]);
 
-  const getRestaurants = () => {
+    const getRestaurants = () => {
     axios
       .get(`${url}/restaurants`, {
         headers: {
@@ -120,13 +127,13 @@ const GlobalState = (props) => {
   // };
 
   // const data = { states, setters, requests };
-  const data = { restaurante, restaurantDetail, getRestaurants };
+ 
+    const data = { restaurante, restaurantDetail, getRestaurants, addCart, setAddCart, setItensAmount, resInfo, setResInfo };
 
-  return (
-    <GlobalContext.Provider value={data}>
-      {props.children}
-    </GlobalContext.Provider>
-  );
-};
-
-export default GlobalState;
+    return (
+        <GlobalContext.Provider value={data}>
+            {props.children}
+        </GlobalContext.Provider>
+    )
+}
+export default GlobalState

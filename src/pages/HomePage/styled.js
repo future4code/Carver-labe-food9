@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-
+export const DivFooter = styled.div`
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+`
 export const Body = styled.div`
 max-width: 100%;
 overflow-x: hidden;

@@ -19,3 +19,7 @@ export const goToPerfil = (history)=>{
 export const goToCart = (history)=>{
     history.push('/cart')
 }
+
+export const goToDetails = (history, restaurantId)=>{
+    history.push(`/restaurant/${restaurantId}`)
+}

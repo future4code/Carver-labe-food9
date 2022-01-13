@@ -1,46 +1,132 @@
-import GlobalContext from './GlobalContext'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import url from '../constants/URL_BASE'
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import GlobalContext from "./GlobalContext";
 
 
-const GlobalState = (props)=>{
+const GlobalState = (props) => {
+  const [restaurante, setRestaurante] = useState([]);
+  const [restaurantDetail, setRestaurantDetail] = useState([]);
+  const [user, setUser] = useState({});
+  const [address, setAddress] = useState({});
 
-    // useEffect(()=>{
-    //     getRestaurantes()
-    // }, [])
+  useEffect(() => {
+    getRestaurants();
+  }, [setRestaurante]);
 
-    const [restaurante, setRestaurante] = useState([])
+  const getRestaurants = () => {
+    axios
+      .get(`${url}/restaurants`, {
+        headers: {
+                        auth: localStorage.getItem('token-login')
+                    },
+      })
+      .then((res) => {
+        console.log(res.data.restaurants)
+        setRestaurante(res.data.restaurants);
+      })
+      .catch((error) => console.log(error));
+  };
 
+  const getRestaurantDetail = (id) => {
+    axios
+      .get(`${url}/restaurants/${id}`, {
+        headers: {
+            auth: localStorage.getItem('token-login')
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setRestaurantDetail(response.data.restaurant);
+      })
+      .catch((error) => console.log(error));
+  };
 
-    const getRestaurantes = ()=>{
-        axios.get(`${url}/restaurants`, {
-            headers:{
-                auth: localStorage.getItem('token-login')
-            }
-        })
-        .then((res)=>{
-            console.log(res.data)
-            setRestaurante(res.data)
-            
-        })
-        .catch((err)=>{
-            console.log(err, 'Erro ao carregar')
-        })
-    }
+  const getFullAddress = () => {;
+    axios
+      .get(`${url}/perfil/address`, {
+        headers: {
+            auth: localStorage.getItem('token-login')
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setAddress(response.data.address);
+      })
+      .catch(
+        (error) => console.log(error)
+      );
+  };
 
+  const getProfile = () => {
+    axios
+      .get(`${url}/perfil`, {
+        headers: {
+            auth: localStorage.getItem('token-login')
+        },
+      })
+      .then((response) => {
+        console.log(response.data.user);
+        setUser(response.data.user);
+      })
+      .catch((error) => console.log(error.message));
+  };
 
+  const getActiveOrder = () => {
+    axios
+      .get(`${url}/cart`, {
+        headers: {
+          Authorization: localStorage.getItem("token-login"),
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error.message));
+  };
 
-    const requests = {getRestaurantes}
-    const states = {restaurante}
-    const setters = {setRestaurante}
+  const getOrdersHistory = () => {
+    axios
+      .get(`${url}/cart`, {
+        headers: {
+          Authorization: localStorage.getItem("token-login"),
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error.message));
+  };
 
-    const data = {requests, states, setters}
+  // const states = {
+  //   restaurante,
+  //   restaurantDetail,
+  //   user,
+  //   address,
+  // };
+  // const setters = {
+  //   setRestaurante,
+  //   setRestaurantDetail,
+  //   setUser,
+  //   setAddress,
+  // };
+  // const requests = {
+  //   getRestaurants,
+  //   getRestaurantDetail,
+  //   getFullAddress,
+  //   getProfile,
+  //   getActiveOrder,
+  //   getOrdersHistory,
+  // };
 
-    return(
-        <GlobalContext.Provider value={data}>
-            {props.children}
-        </GlobalContext.Provider>
-    )
-}
-export default GlobalState
+  // const data = { states, setters, requests };
+  const data = { restaurante, restaurantDetail, getRestaurants };
+
+  return (
+    <GlobalContext.Provider value={data}>
+      {props.children}
+    </GlobalContext.Provider>
+  );
+};
+
+export default GlobalState;

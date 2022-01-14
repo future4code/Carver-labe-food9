@@ -107,4 +107,5 @@ export const ButtonFilter = styled.button`
     font-size: 0.8rem;
     font-family: Oxygen;
     margin: 0 auto;
+    border: none;
 `

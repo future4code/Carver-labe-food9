@@ -1,7 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { goToAddress } from '../../router/coordinator';
 import { BtnSubmit, ContentInput, Form } from './styled'
 
 const FormSingUp = (props) => {
+
+    const history = useHistory();
+
     return (
         <Form onSubmit={props.submit}>
             <ContentInput>
@@ -17,10 +22,11 @@ const FormSingUp = (props) => {
             <ContentInput>
                 <label>CPF</label>
                 <input
+                    placeholder={"000.000.000-00"}
                     name={'cpf'}
                     value={props.cpfValue}
                     onChange={props.change}
-                    type="text"
+                    type={"number"}
                     required
                 />
             </ContentInput>
@@ -46,7 +52,7 @@ const FormSingUp = (props) => {
                     required
                 />
             </ContentInput>
-            <BtnSubmit type="submit">Criar</BtnSubmit>
+            <BtnSubmit  type="submit">Criar</BtnSubmit>
 
         </Form>
     )

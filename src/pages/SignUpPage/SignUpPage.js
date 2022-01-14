@@ -6,7 +6,8 @@ import { useHistory } from 'react-router-dom';
 import logo from '../../Images/logo-future.png'
 import { DivPai, H1, Img, Title } from "./styled"
 import FormSingUp from '../../components/FormSingUp/FormSingUp';
-import { goToHome } from '../../router/coordinator'
+import { goToAddress, goToHome } from '../../router/coordinator'
+import { signUp } from '../../services/User'
 
 const SignUpPage = () => {
 
@@ -23,7 +24,8 @@ const SignUpPage = () => {
             .then((res) => {
                 console.log('cadastrou')
                 localStorage.setItem('token-login', res.data.token)
-                goToHome(history)
+                goToAddress(history)
+                limpa()
             })
             .catch((err) => {
                 console.log(err)
@@ -32,6 +34,7 @@ const SignUpPage = () => {
 
     const createUser = (e) => {
         e.preventDefault()
+        postSignUp(formulario, history, limpa)
 
         const { name, email, cpf, password } = formulario
         if (name.trim() !== '' && cpf.trim() !== '' && email.trim() !== '' && password.trim() !== '') {

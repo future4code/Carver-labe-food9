@@ -1,11 +1,11 @@
 import React from "react";
-import {Div} from './style'
+import { Div } from './style'
+import logo from '../../Images/logo-future.png'
 
-
-const Header = ()=>{
-    return(
+const Header = () => {
+    return (
         <Div>
-            <h1>Ifuture</h1>
+            <img src={logo} />
             <hr></hr>
         </Div>
     )

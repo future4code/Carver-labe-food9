@@ -1,60 +1,23 @@
-import React, { useEffect, useContext, useState, useMemo } from "react"
+import React, { useContext, useState } from "react"
 import GlobalContext from "../../context/GlobalContext";
 import { useHistory } from 'react-router-dom'
-import styled from "styled-components";
-import axios from "axios";
-import url from '../../constants/URL_BASE'
 import Header from '../../components/Header/Header'
-import { Body, Card, Img, Title, Time, Container, ButtonActive, Buttons, ButtonFilter } from './styled'
+import { Body, Container, ButtonActive, Buttons, ButtonFilter, DivFooter } from './styled'
 import search from '../../Images/search.png'
 import Footer from "../../components/Footer/Footer";
-import useForm from '../../hooks/useForm'
-
-const DivFooter = styled.div`
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    
-`
-
+import useProtectedPage from "../../hooks/useProtectedPage";
+import CardHome from "../../components/CardHome/CardHome"
 
 const HomePage = () => {
+    useProtectedPage()
+
     const { restaurante, setRestaurante, getRestaurants } = useContext(GlobalContext)
 
-    // const [restaurante, setRestaurante] = useState()
-    // const {formulario, onChange, limpa } = useForm({name:''})
     const [categoria, setCategoria] = useState('')
     const [filtroNome, setFiltroNome] = useState('')
     const [limpaFiltro, setLimpaFiltro] = useState(false)
 
-
-
     const history = useHistory();
-
-    const goToRestaurante = (id) => {
-        history.push(`/restaurant/${id}`)
-    }
-
-
-    // PEGA A LISTA DA API
-    // const getRestaurantes = () => {
-    //     axios.get(`${url}/restaurants`, {
-    //         headers: {
-    //             auth: localStorage.getItem('token-login')
-    //         }
-    //     })
-    //         .then((res) => {
-    //             console.log(res.data.restaurants)
-    //             setRestaurante(res.data.restaurants)
-
-    //         })
-    //         .catch((err) => {
-    //             console.log(err, 'Erro ao carregar')
-    //         })
-    // }
-
-
-
 
     // FUNÇÕES
     const onClickCategoria = (cat) => {
@@ -73,25 +36,17 @@ const HomePage = () => {
     }
 
 
-
     // FILTROS
-
-
 
     const getCategoria = restaurante && restaurante && (restaurante
         .map((res) => {
             return (
                 <ButtonActive onClick={() => onClickCategoria(res.category)}>
                     {res.category}
-                    {/* {limpa()} */}
                 </ButtonActive>
 
             )
         }))
-
-
-
-
 
     const restaurantes = restaurante && restaurante
         .filter((res) => {
@@ -100,24 +55,11 @@ const HomePage = () => {
         .filter((res) => {
             return res.category.toLowerCase().includes(categoria.toLocaleLowerCase())
         })
-        .map((rest) => {
+        .map((restaurante) => {
             return (
-                <Card key={rest.id} onClick={() => goToRestaurante(rest.id)}>
-                    <Img>
-                        <img src={rest.logoUrl} alt={rest.name} />
-                    </Img>
-                    <Title>
-                        <h1>{rest.name}</h1>
-                    </Title>
-                    <Time>
-                        <p>{rest.deliveryTime}min</p>
-                        <p>Frete R$ {rest.shipping},00</p>
-                    </Time>
-                </Card>
+                <CardHome restaurante={restaurante}/>
             )
         })
-
-
 
     return (
         <Body>
@@ -126,11 +68,10 @@ const HomePage = () => {
             <Container>
                 <img src={search} alt={'Lupa'} />
                 <input onChange={onChangeName} placeholder="Nome do Restaurante" type="text" />
-                {/* {limpaFiltro && <button onClick={Limpa}>Limpar</button>} */}
             </Container>
 
             <Buttons>
-                {limpaFiltro && <ButtonFilter onClick={Limpa} >Limpar todo</ButtonFilter>}
+                {limpaFiltro && <ButtonFilter onClick={Limpa} >Todos</ButtonFilter>}
                 {getCategoria}
 
             </Buttons>

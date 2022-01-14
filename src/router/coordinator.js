@@ -20,6 +20,10 @@ export const goToCart = (history)=>{
     history.push('/cart')
 }
 
-export const goToDetails = (history, restaurantId)=>{
-    history.push(`/restaurant/${restaurantId}`)
+export const goToAddress= (history)=>{
+    history.push('/address')
+}
+
+export const goToRestaurante = (history, id) => {
+    history.push(`/restaurant/${id}`)
 }

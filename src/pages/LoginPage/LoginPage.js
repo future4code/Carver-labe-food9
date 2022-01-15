@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import logo from '../../Images/logo-future.png'
 import axios from "axios"
 import useForm from "../../hooks/useForm"
@@ -9,6 +9,7 @@ import {goToHome, goToSignUp} from '../../router/coordinator'
 
 
 const LoginPage = () => {
+   
     const { formulario, onChange, limpa } = useForm({
         email: '',
         password: ''
@@ -22,7 +23,7 @@ const LoginPage = () => {
 
         axios.post(`${url}/login`, formulario)
             .then((res) => {
-                console.log('Entrou')
+                
                 localStorage.setItem('token-login', res.data.token)
                 goToHome(history)
             })

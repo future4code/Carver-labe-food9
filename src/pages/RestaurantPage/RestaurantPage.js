@@ -4,18 +4,21 @@ import url from '../../constants/URL_BASE'
 import axios from "axios";
 import CardDeta from "../../components/CardDeta/CardDeta";
 import CardMenu from "../../components/CardMenu/CardMenu";
-import styled from "styled-components";
-import {Titulo} from './styled'
+import {Titulo, DivFooter} from './styled'
 import GlobalContext from "../../context/GlobalContext";
+import Footer from "../../components/Footer/Footer"
+import useProtectedPage from "../../hooks/useProtectedPage";
+
 
 
 
 
 const RestaurantPage = () => {
+    useProtectedPage()
     const [data, setData] = useState({ restaurant: {} })
     const params = useParams() 
-    // const [restaurante, setRestaurante] = useState([])
     const {resInfo, setResInfo} = useContext(GlobalContext)
+    const history = useHistory()
 
     useEffect(()=>{
         getRestaurantes()
@@ -33,7 +36,7 @@ const RestaurantPage = () => {
         const array = i.filter((it)=> it.category === item)
         const card = array.map((produ)=>{
             return (
-            <CardMenu key={produ.id} product={produ}/>
+            <CardMenu key={Math.random()} restaurantId={params.id} product={produ}/>
             
             )
         })
@@ -63,13 +66,12 @@ const RestaurantPage = () => {
             }
         })
         .then((res)=>{
-            console.log(res.data)
             // setRestaurante(res.data)
             setResInfo(res.data.restaurant)
             setData(res.data)
         })
         .catch((err)=>{
-            console.log(err, 'Erro ao carregar')
+            alert(err, 'Erro ao carregar')
         })
     }
 
@@ -77,6 +79,11 @@ const RestaurantPage = () => {
         <div>
         <CardDeta restaurant={data && data.restaurant}/>
         {lista}
+        <DivFooter>
+        <Footer
+                history={history}
+            />
+            </DivFooter>
         
         </div>
     )

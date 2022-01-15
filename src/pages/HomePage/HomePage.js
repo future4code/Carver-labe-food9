@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import GlobalContext from "../../context/GlobalContext";
 import { useHistory } from 'react-router-dom'
 import Header from '../../components/Header/Header'
@@ -8,8 +8,12 @@ import Footer from "../../components/Footer/Footer";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import CardHome from "../../components/CardHome/CardHome"
 
+
 const HomePage = () => {
     useProtectedPage()
+    useEffect(()=>{
+        getRestaurants()
+    }, [])
 
     const { restaurante, setRestaurante, getRestaurants } = useContext(GlobalContext)
 

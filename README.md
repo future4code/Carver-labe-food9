@@ -38,7 +38,7 @@
 <br/> -->
   
  <br/>
- <h2> 🔗 <a href="https://scared-brush.surge.sh/" target="_blank">Acessa o 4Food</a> </h2>
+ <h2> 🔗 Acesse: <a href="https://scared-brush.surge.sh/" target="_blank">4Food</a> </h2>
  <p>Login: frontacabou@gmail.com</p>
  <p>Senha: 123456</p>
  

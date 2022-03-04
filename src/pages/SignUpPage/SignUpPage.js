@@ -4,7 +4,7 @@ import url from '../../constants/URL_BASE'
 import useForm from "../../hooks/useForm"
 import { useHistory } from 'react-router-dom';
 import logo from '../../Images/logo-future.png'
-import { DivPai, H1, Img, Title } from "./styled"
+import { Body, H1, HeaderContainer, Title, Wrap } from "./styled"
 import FormSingUp from '../../components/FormSingUp/FormSingUp';
 import { goToAddress, goToHome } from '../../router/coordinator'
 import { signUp } from '../../services/User'
@@ -19,7 +19,7 @@ const SignUpPage = () => {
     })
     const history = useHistory()
 
-    const postSignUp = (formulario, history, limpa ) => {
+    const postSignUp = (formulario, history, limpa) => {
         axios.post(`${url}/signup`, formulario)
             .then((res) => {
                 console.log('cadastrou')
@@ -47,22 +47,40 @@ const SignUpPage = () => {
 
 
     return (
-        <DivPai>
-            <Img>
-                <img src={logo} />
-            </Img>
-            <Title>
-                <H1>Cadastrar</H1>
-            </Title>
-            <FormSingUp
-                submit={createUser}
-                nameValue={formulario.name}
-                cpfValue={formulario.cpf}
-                emailValue={formulario.email}
-                passwordValue={formulario.password}
-                change={onChange}
-            />
-        </DivPai>
+        <Body>
+            <Wrap>
+                <div id="Wrap">
+                    <HeaderContainer>
+                        <img src={logo} />
+                    </HeaderContainer>
+                    <Title>
+                        <H1>Cadastrar</H1>
+                    </Title>
+
+
+                    <div id="WrapMainContainer">
+                        <div id="WrapMain">
+
+                            <FormSingUp
+                                submit={createUser}
+                                nameValue={formulario.name}
+                                cpfValue={formulario.cpf}
+                                emailValue={formulario.email}
+                                passwordValue={formulario.password}
+                                change={onChange}
+                            />
+
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </Wrap>
+        </Body>
     )
 }
 

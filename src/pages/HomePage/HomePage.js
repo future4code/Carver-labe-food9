@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import GlobalContext from "../../context/GlobalContext";
 import { useHistory } from 'react-router-dom'
 import Header from '../../components/Header/Header'
-import { Body, Container, ButtonActive, Buttons, ButtonFilter, DivFooter } from './styled'
+import { ContainerAll, HeaderContainer, Wrap, Body, Container, ButtonActive, Buttons, ButtonFilter, DivFooter } from './styled'
 import search from '../../Images/search.png'
 import Footer from "../../components/Footer/Footer";
 import useProtectedPage from "../../hooks/useProtectedPage";
@@ -11,7 +11,7 @@ import CardHome from "../../components/CardHome/CardHome"
 
 const HomePage = () => {
     useProtectedPage()
-    useEffect(()=>{
+    useEffect(() => {
         getRestaurants()
     }, [])
 
@@ -61,36 +61,57 @@ const HomePage = () => {
         })
         .map((restaurante) => {
             return (
-                <CardHome restaurante={restaurante}/>
+                <CardHome restaurante={restaurante} />
             )
         })
 
     return (
         <Body>
 
-            <Header />
-            <Container>
-                <img src={search} alt={'Lupa'} />
-                <input onChange={onChangeName} placeholder="Nome do Restaurante" type="text" />
-            </Container>
+            <ContainerAll>
 
-            <Buttons>
-                {limpaFiltro && <ButtonFilter onClick={Limpa} >Todos</ButtonFilter>}
-                {getCategoria}
 
-            </Buttons>
+                <Wrap>
 
-            <div>
-                {restaurantes && restaurantes.length > 0 ? (
-                    restaurantes
-                ) : (
-                    <p>Não existe esse restaurante</p>
-                )}
-            </div>
-            <DivFooter>
-                <Footer />
-            </DivFooter>
+                    <div id="Wrap">
 
+                        <HeaderContainer>
+                            <Header />
+                            <Container>
+                                <img src={search} alt={'Lupa'} />
+                                <input onChange={onChangeName} placeholder="Nome do Restaurante" type="text" />
+
+
+                            </Container>
+
+                            <Buttons>
+                                {limpaFiltro && <ButtonFilter onClick={Limpa} >Todos</ButtonFilter>}
+                                {getCategoria}
+
+                            </Buttons>
+
+                        </HeaderContainer>
+                        <div id="WrapMainContainer">
+                            <div id="WrapMain">
+                                <div>
+                                    {restaurantes && restaurantes.length > 0 ? (
+                                    <p>{restaurantes}</p>
+                                ) : (
+                                    <p>Não existe esse restaurante</p>
+                                )}
+                                </div>
+                                <DivFooter>
+                                    <Footer />
+                                </DivFooter>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </Wrap>
+
+            </ContainerAll>
         </Body>
     )
 }

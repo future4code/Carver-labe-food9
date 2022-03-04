@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Div = styled.div`
-    display: flex;
-    justify-content: space-around;
-    background-color: #fff;
-    height: 55px;
+background: #fff;
+display: flex;
+justify-content: space-around;
+width: 100%;
 
     button{
         background-color: transparent;

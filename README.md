@@ -38,7 +38,7 @@
 <br/> -->
   
  <br/>
- <h2> 🔗 Acesse: <a href="http://4food_.surge.sh/login" target="_blank">4Food</a> </h2>
+ <h2> 🔗 Acesse: <a href="http://4food_.surge.sh/" target="_blank">4Food</a> </h2>
  <p>Login: teste@teste.com</p>
  <p>Senha: Teste4321</p>
  
